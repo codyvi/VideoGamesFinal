@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class prender : MonoBehaviour
 {
+
+    public bool on = true;
     public Light my_light; 
 
     void Start()
     {
-        my_light = GetComponent<Light>();
+        on = true;
     }
 
 
@@ -18,13 +20,15 @@ public class prender : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.F))
         {
            
-            if(my_light.enabled)
+            if(on == true)
             {
                 my_light.enabled = false;
+                on = false;
             }
             else
             {
                 my_light.enabled = true;
+                on = true;
             }
         }
         
