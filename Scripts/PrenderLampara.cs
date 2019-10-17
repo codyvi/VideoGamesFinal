@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class prender : MonoBehaviour
+public class PrenderLampara : MonoBehaviour
 {
 
     public bool on = true;
-    public Light my_light; 
+    public Light my_light;
 
     void Start()
     {
@@ -17,10 +17,10 @@ public class prender : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.F))
+        if (Input.GetKeyDown(KeyCode.F))
         {
-           
-            if(on == true)
+
+            if (on == true)
             {
                 my_light.enabled = false;
                 on = false;
@@ -31,6 +31,6 @@ public class prender : MonoBehaviour
                 on = true;
             }
         }
-        
+
     }
 }
