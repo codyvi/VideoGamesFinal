@@ -13,6 +13,7 @@ public class PrenderLampara : MonoBehaviour
     public float currentEnergy;
     private int batteryLife;
     public static int BateriasAMostrar;
+    public AudioSource audioData;
 
     void Start()
     {
@@ -27,6 +28,7 @@ public class PrenderLampara : MonoBehaviour
     void Update()
     {
         txt.text = "Baterias: " + BateriasAMostrar;
+        //Controlador para prender y apagar la lampara 
         if (Input.GetKeyDown(KeyCode.F))
         {
 
@@ -34,31 +36,33 @@ public class PrenderLampara : MonoBehaviour
             {
                 my_light.enabled = false;
                 on = false;
+                audioData.Play();
                 
             }
             else
             {
                 my_light.enabled = true;
                 on = true;
+                audioData.Play();
             }
         }
 
-
+        //If para bajar la bateria de la lampara
         if(on == true)
         {
-            
+            //Si se llega a acabar la bateria, pierdes llevandote a una scene de perder 
             if(currentEnergy <= 0)
             {
                 my_light.enabled = false;
             }
-
+            //Bajar la bateria de la lampara 
             if(currentEnergy > 0)
             {
                 currentEnergy -= 0.5f * Time.deltaTime;
                 BateriasAMostrar = (int) currentEnergy;
             }
         }
-
+        //If para subir la bateria de la lampara
         else if(on == false)
         {
             if (currentEnergy < 25)
