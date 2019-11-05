@@ -1,24 +1,32 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PrenderLampara : MonoBehaviour
 {
+    public Text txt;
 
     public bool on = true;
     public Light my_light;
-    public int batteryLife;
+    public float maxEnergy;
+    public float currentEnergy;
+    private int batteryLife;
+    public static int BateriasAMostrar;
 
     void Start()
     {
         on = true;
-        batteryLife = 100;
+        maxEnergy = 25;
+        currentEnergy = maxEnergy;
+        txt.text = "Baterias: ";
     }
 
 
     // Update is called once per frame
     void Update()
     {
+        txt.text = "Baterias: " + BateriasAMostrar;
         if (Input.GetKeyDown(KeyCode.F))
         {
 
@@ -35,14 +43,29 @@ public class PrenderLampara : MonoBehaviour
             }
         }
 
-        while(on == true)
+
+        if(on == true)
         {
-            batteryLife -= 5;
+            
+            if(currentEnergy <= 0)
+            {
+                my_light.enabled = false;
+            }
+
+            if(currentEnergy > 0)
+            {
+                currentEnergy -= 0.5f * Time.deltaTime;
+                BateriasAMostrar = (int) currentEnergy;
+            }
         }
 
-        if(batteryLife == 0)
+        else if(on == false)
         {
-            my_light.enabled = false;
+            if (currentEnergy < 25)
+            {
+                currentEnergy += 0.5f * Time.deltaTime;
+                BateriasAMostrar = (int) currentEnergy;
+            }
         }
 
     }
