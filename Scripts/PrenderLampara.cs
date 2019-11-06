@@ -20,14 +20,14 @@ public class PrenderLampara : MonoBehaviour
         on = true;
         maxEnergy = 25;
         currentEnergy = maxEnergy;
-        txt.text = "Baterias: ";
+        txt.text = "Bateria: ";
     }
 
 
     // Update is called once per frame
     void Update()
     {
-        txt.text = "Baterias: " + BateriasAMostrar;
+        txt.text = "Bateria: " + BateriasAMostrar;
         //Controlador para prender y apagar la lampara 
         if (Input.GetKeyDown(KeyCode.F))
         {
@@ -59,6 +59,7 @@ public class PrenderLampara : MonoBehaviour
             if(currentEnergy > 0)
             {
                 currentEnergy -= 0.5f * Time.deltaTime;
+                my_light.intensity -= 0.005f;
                 BateriasAMostrar = (int) currentEnergy;
             }
         }
@@ -67,10 +68,17 @@ public class PrenderLampara : MonoBehaviour
         {
             if (currentEnergy < 25)
             {
-                currentEnergy += 0.5f * Time.deltaTime;
+                currentEnergy += 0.25f * Time.deltaTime;
+                my_light.intensity += .0005f;
                 BateriasAMostrar = (int) currentEnergy;
+            }
+
+            if(currentEnergy == 25)
+            {
+                 my_light.intensity = 15f;
             }
         }
 
     }
+
 }
