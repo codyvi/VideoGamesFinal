@@ -6,7 +6,7 @@ using UnityEngine.AI;
 public class EnemyController : MonoBehaviour
 {
 
-    public float lookRadius = 10f;
+    public static float lookRadius = 0f;
 
     Transform target; 
     NavMeshAgent agent;
@@ -24,6 +24,11 @@ public class EnemyController : MonoBehaviour
         if(distance <= lookRadius)
         {
             agent.SetDestination(target.position);
+        }
+
+        if(lookRadius > 0)
+        {
+            lookRadius -= 0.5f * Time.deltaTime;
         }
     }
 

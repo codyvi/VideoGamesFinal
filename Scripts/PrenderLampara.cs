@@ -39,10 +39,14 @@ public class PrenderLampara : MonoBehaviour
             SceneManager.LoadScene(2);
         }
 
+        if(Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.A) == true || Input.GetKeyDown(KeyCode.S) == true || Input.GetKeyDown(KeyCode.D) == true)
+        {
+            EnemyController.lookRadius += 2f;
+        }
 
         if (Input.GetKeyDown(KeyCode.F))
         {
-
+            EnemyController.lookRadius += 5f;
             if (on == true)
             {
                 my_light.enabled = false;
@@ -80,8 +84,8 @@ public class PrenderLampara : MonoBehaviour
         {
             if (currentEnergy < 25)
             {
-                currentEnergy += 0.25f * Time.deltaTime;
-                my_light.intensity += .0005f;
+                currentEnergy += 0.5f * Time.deltaTime;
+                my_light.intensity += .005f;
                 BateriasAMostrar = (int) currentEnergy;
             }
 
