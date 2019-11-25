@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PrenderLampara : MonoBehaviour
 {
     public Text txt;
 
     public bool on = true;
+    public bool perdiste = false;
     public Light my_light;
     public float maxEnergy;
     public float currentEnergy;
@@ -29,6 +31,15 @@ public class PrenderLampara : MonoBehaviour
     {
         txt.text = "Bateria: " + BateriasAMostrar;
         //Controlador para prender y apagar la lampara 
+
+        if(perdiste)
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+            SceneManager.LoadScene(2);
+        }
+
+
         if (Input.GetKeyDown(KeyCode.F))
         {
 
@@ -54,6 +65,7 @@ public class PrenderLampara : MonoBehaviour
             if(currentEnergy <= 0)
             {
                 my_light.enabled = false;
+                perdiste = true;
             }
             //Bajar la bateria de la lampara 
             if(currentEnergy > 0)

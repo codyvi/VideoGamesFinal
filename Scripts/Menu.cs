@@ -3,15 +3,25 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GameOverMenu : MonoBehaviour
+public class Menu : MonoBehaviour
 {
     // Start is called before the first frame update
-    public void VolverAJugar()
+    public void Jugar()
     {
         SceneManager.LoadScene(1);
     }
 
-    public void Salir()
+    public void Instrucciones()
+    {
+        SceneManager.LoadScene(1);
+    }
+
+    public void Creditos()
+    {
+        SceneManager.LoadScene(1);
+    }
+
+    public void Terminar()
     {
         Debug.Log("Quit!");
         Application.Quit();

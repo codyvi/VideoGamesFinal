@@ -30,7 +30,7 @@ public class Choque : MonoBehaviour
         {
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
-            SceneManager.LoadScene(1);
+            SceneManager.LoadScene(2);
         }
 
     }
